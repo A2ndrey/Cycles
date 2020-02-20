@@ -44,20 +44,139 @@ namespace Cycles
             //subtractingPpositiAndNegative();
             // average();
             // countmorethenpreviouse();
-            countsignchange();
+            // countsignchange();
+            // threedividers();
+            //countseven();
+            // maxsumdigit();
+            decompositiontosimpledigits();
+
         }
 
+        static void decompositiontosimpledigits()
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int i = 2;
+            int j = n;
+
+            while (j > 1)
+            {
+                if ((j%i)==0)
+                {
+                    Console.Write(i + " ");
+                    j = j / i;
+                }
+                else { 
+                while ((j % i) != 0)
+                {
+                    i++;
+                }
+                }
+            }
+
+            Console.ReadKey();
+
+        }
+
+        static void maxsumdigit()
+        {
+            int N = Convert.ToInt32(Console.ReadLine());
+            int max_sum = 0;
+            int max_i = 1;
+
+            for (int i = 1; i <=N; i++)
+            {
+               int n = i;
+                int cur_summ = 0;
+                while (n > 0)
+                {
+                    int digit = n % 10;
+
+                    cur_summ += digit;
+                    n /= 10;
+
+                }
+                if (cur_summ >= max_sum)
+                {
+                    max_sum = cur_summ;
+                    max_i = i;
+                }
+                
+
+            }
+
+            Console.WriteLine(max_i + " " + max_sum);
+
+
+            Console.ReadKey();
+        }
+        static void countseven()
+        {
+            int N = Convert.ToInt32(Console.ReadLine());
+            int count = 0;
+            int n = 0;
+            for (int i = 0; i <= N; i++)
+            {
+                n = i;
+                while (n > 0)
+                {
+                    int digit = n % 10;
+                    if (digit == 7)
+                    {
+                        count++;
+                    }
+                    n /= 10;
+                }
+            }
+
+            Console.WriteLine(count);
+
+            Console.ReadKey();
+
+        }
+
+
+        static void threedividers()
+        {
+
+            int a = Convert.ToInt32(Console.ReadLine());
+            int b = Convert.ToInt32(Console.ReadLine());
+            int k = Convert.ToInt32(Console.ReadLine());
+
+            int i, j, count;
+
+            for (i = a; i <= b; i++)
+            {
+                count = 0;
+
+                for (j = 1; j <= i; j++)
+                {
+                    if (i % j == 0)
+                    {
+                        count++;
+                    }
+                }
+
+                if (count >= k)
+                {
+                    Console.Write(i + " ");
+                }
+
+
+            }
+
+            Console.ReadKey();
+        }
         static void countsignchange()
         {
             int n = Convert.ToInt32(Console.ReadLine());
             int prev, count;
-            prev  = 0;
+            prev = 0;
             count = 0;
 
 
-            while ( n != 0)
+            while (n != 0)
             {
-                if ( ( n > 0) && (prev < 0)  || (n < 0) && (prev > 0))
+                if ((n > 0) && (prev < 0) || (n < 0) && (prev > 0))
                 {
                     count++;
                 }
@@ -75,8 +194,8 @@ namespace Cycles
 
         static void countmorethenpreviouse()
         {
-            int n     = Convert.ToInt32(Console.ReadLine());
-            int prev  = 0;
+            int n = Convert.ToInt32(Console.ReadLine());
+            int prev = 0;
             int count = 0;
 
             while (n != 0)
@@ -99,8 +218,8 @@ namespace Cycles
 
         static void average()
         {
-            int n     = Convert.ToInt32(Console.ReadLine());
-            int sum   = 0;
+            int n = Convert.ToInt32(Console.ReadLine());
+            int sum = 0;
             int count = 0;
 
             while (n != 0)
@@ -125,7 +244,7 @@ namespace Cycles
             int countN = 0;
             while (n != 0)
             {
-                if ( n > 0 )
+                if (n > 0)
                 {
                     countP++;
                 }
@@ -149,9 +268,9 @@ namespace Cycles
             int sum = 0;
             while (n != 0)
             {
-                if (  (n %2 == 0) && (n %3 != 0 )  )
+                if ((n % 2 == 0) && (n % 3 != 0))
                 {
-                   sum += n;
+                    sum += n;
                 }
 
                 n = Convert.ToInt32(Console.ReadLine());
@@ -210,7 +329,7 @@ namespace Cycles
         {
             int n = Convert.ToInt32(Console.ReadLine());
             string reversen = "";
-   
+
             while (n > 0)
             {
                 int digit = n % 10;
@@ -239,10 +358,10 @@ namespace Cycles
             {
                 int digit = n % 10;
                 sum += digit;
-                n /=10;
+                n /= 10;
             }
 
-            if ((n2%sum) ==0)
+            if ((n2 % sum) == 0)
             {
                 Console.WriteLine("YES");
             }
