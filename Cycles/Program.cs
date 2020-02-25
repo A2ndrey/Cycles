@@ -41,15 +41,111 @@ namespace Cycles
             // reversebinary();
             // countonebinary();
             // evennumbernonthree();
-            //subtractingPpositiAndNegative();
+            // subtractingPpositiAndNegative();
             // average();
             // countmorethenpreviouse();
             // countsignchange();
             // threedividers();
-            //countseven();
+            // countseven();
             // maxsumdigit();
-            decompositiontosimpledigits();
+            // decompositiontosimpledigits();
+            // maxdivider();
+            // numbersfrom10to100();
+            // multiplymumber();
+            stringnumber();
+        }
 
+
+        static void stringnumber()
+        {
+  
+            string s = Console.ReadLine();
+            int i = 1;
+
+            while (true)
+            {
+                string s2 = Console.ReadLine();
+
+                if (s == s2)
+                {
+                    Console.WriteLine(i);
+                    break;
+                }
+
+                i++;
+
+            }
+
+            Console.ReadKey();
+
+
+        }
+        static void multiplymumber()
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int c = Convert.ToInt32(Console.ReadLine());
+            int d = Convert.ToInt32(Console.ReadLine());
+            int j = 0;
+            bool succes = false;
+
+            for (int i = 1; i < n; i++)
+            {
+                if ((i % c == 0) && (i % d != 0))
+                {
+                    j = i;
+                    succes = true;
+                    break;
+                }
+            }
+
+            if (succes)
+            {
+                Console.WriteLine(j);
+
+            }
+
+            Console.ReadKey();
+        }
+
+
+        static void numbersfrom10to100()
+        {
+
+            while (true)
+            {
+                int n = Convert.ToInt32(Console.ReadLine());
+
+                if (n < 10)
+                {
+                    continue;
+                }
+                else if (n > 100)
+                {
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine(n);
+                }
+
+            }
+
+        }
+
+        static void maxdivider()
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = (n - 1); i > 1; i--)
+            {
+                if (n % i == 0)
+                {
+                    Console.WriteLine(i);
+                    break;
+                }
+            }
+
+            Console.ReadKey();
         }
 
         static void decompositiontosimpledigits()
@@ -60,16 +156,17 @@ namespace Cycles
 
             while (j > 1)
             {
-                if ((j%i)==0)
+                if ((j % i) == 0)
                 {
                     Console.Write(i + " ");
                     j = j / i;
                 }
-                else { 
-                while ((j % i) != 0)
+                else
                 {
-                    i++;
-                }
+                    while ((j % i) != 0)
+                    {
+                        i++;
+                    }
                 }
             }
 
@@ -83,9 +180,9 @@ namespace Cycles
             int max_sum = 0;
             int max_i = 1;
 
-            for (int i = 1; i <=N; i++)
+            for (int i = 1; i <= N; i++)
             {
-               int n = i;
+                int n = i;
                 int cur_summ = 0;
                 while (n > 0)
                 {
@@ -100,7 +197,7 @@ namespace Cycles
                     max_sum = cur_summ;
                     max_i = i;
                 }
-                
+
 
             }
 
