@@ -52,21 +52,152 @@ namespace Cycles
             // maxdivider();
             // numbersfrom10to100();
             // multiplymumber();
-            stringnumber();
+            // stringnumber();
+            // EnumerableQubicEquation();
+            // multiplydigits();
+            //threedigitanalys();
+            //interestingdigits();
+            // perfectnumber();
+            difficultqubicequations();
+        }
+
+        private static void difficultqubicequations()
+        {
+            int a = Convert.ToInt32(Console.ReadLine());
+            int b = Convert.ToInt32(Console.ReadLine());
+            int c = Convert.ToInt32(Console.ReadLine());
+            int d = Convert.ToInt32(Console.ReadLine());
+            int e = Convert.ToInt32(Console.ReadLine());
+            double leftpart = 0;
+            double rightpart = 0;
+            int count = 0;
+
+            for(int i = 0; i<=1000; i++)
+            {
+                leftpart = (a * Math.Pow(i, 3) + b * Math.Pow(i, 2) + c * i + d);
+                rightpart = i - e;
+                if ((rightpart != 0) && (leftpart / rightpart) == 0) 
+                {
+                    count++;
+                }
+
+            }
+
+            Console.WriteLine(count);
+    
+            Console.ReadKey();
         }
 
 
+
+        private static void perfectnumber()
+        {
+            int count_perfect = 0;
+            for(int digit=1; digit<=10000; digit++)
+            {
+                int sum = 0;
+
+                for (int i=1; i < digit; i++)
+                {
+                    if ((digit % i) == 0)
+                    {
+                        sum += i;
+                    }
+                }
+
+                if (digit == sum)
+                {
+                    Console.WriteLine($"Perfect digit: {digit}");
+                    count_perfect++;
+                }
+
+                if (count_perfect == 3)
+                {
+                    break;
+                }
+
+            }
+
+            Console.ReadKey();
+        }
+
+        private static void interestingdigits()
+        {
+            for(int i=10; i<100; i++)
+            {
+                if ( (i%10) * (i/10) * 2== i)
+                {
+                    Console.WriteLine($"Interesting digit: {i}");
+                }
+            }
+            Console.ReadKey();
+
+        }
+
+        static void threedigitanalys()
+        {
+
+            int count = 0;
+
+            for (int n = 100; n <= 999; n++)
+            {
+                if ((n / 100 + (n / 10) % 10 + n % 10) == 8)
+                {
+                    count++;
+                }
+            }
+            Console.WriteLine($"Количество элементов: {count}");
+            Console.ReadKey();
+        }
+        static void multiplydigits()
+        {
+
+            int n = Convert.ToInt32(Console.ReadLine());
+            int c = Convert.ToInt32(Console.ReadLine());
+            int d = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 1; i <= n; i++)
+            {
+                if ((i % c == 0) && (i % d != 0))
+                {
+                    Console.WriteLine(i);
+                }
+
+            }
+
+            Console.ReadKey();
+
+        }
+
+        static void EnumerableQubicEquation()
+        {
+
+            int a = Convert.ToInt32(Console.ReadLine());
+            int b = Convert.ToInt32(Console.ReadLine());
+            int c = Convert.ToInt32(Console.ReadLine());
+            int d = Convert.ToInt32(Console.ReadLine());
+
+            for (int x = 0; x <= 1000; x++)
+            {
+
+                if (((a * Math.Pow(x, 3)) + b * Math.Pow(x, 2) + c * x + d) == 0)
+                {
+                    Console.Write(x + " ");
+                }
+            }
+            Console.ReadKey();
+        }
         static void stringnumber()
         {
-  
+
             string s = Console.ReadLine();
             int i = 1;
 
             while (true)
             {
-                string s2 = Console.ReadLine();
+                string newstring = Console.ReadLine();
 
-                if (s == s2)
+                if (s == newstring)
                 {
                     Console.WriteLine(i);
                     break;
