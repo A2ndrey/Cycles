@@ -58,7 +58,143 @@ namespace Cycles
             //threedigitanalys();
             //interestingdigits();
             // perfectnumber();
-            difficultqubicequations();
+            // difficultqubicequations();
+            // simlemin();
+            //simplemax();
+            // extremum_sub();
+            // speedfromcamera();
+            secondmax();
+
+        }
+
+        private static void secondmax()
+        {
+
+            int max1 = 0;
+            int max2 = 0;
+
+            while (true)
+            {
+                int n = Convert.ToInt32(Console.ReadLine());
+
+                if (n == 0) { break; }
+
+                if (n > max1)
+                {
+                    max2 = max1;
+                    max1 = n;
+                    
+                }
+                else if (n > max2)
+                {
+                    max2 = n;
+                }
+            }
+
+ 
+            Console.WriteLine(max2);
+
+            Console.ReadLine();
+        }
+
+        private static void speedfromcamera()
+        {
+            const int LIMIT = 30;
+            bool print_yes = false;
+
+            int n = Convert.ToInt32(Console.ReadLine());
+            int max = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                int a = Convert.ToInt32(Console.ReadLine());
+                if (a > max)
+                {
+                    max = a;
+                }
+
+                if (a < LIMIT) { print_yes = true; }
+            }
+
+            string keyword = print_yes ? "YES" : "NO";
+
+            Console.WriteLine($"{max} {keyword}");
+
+            Console.ReadKey();
+        }
+
+        private static void extremum_sub()
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+
+            int a = Convert.ToInt32(Console.ReadLine());
+
+            int min = a;
+            int max = a;
+
+            for (int i = 1; i < n; i++)
+            {
+                a = Convert.ToInt32(Console.ReadLine());
+
+                if (a > max)
+                {
+                    max = a;
+                }
+
+                if (a < min)
+                {
+                    min = a;
+                }
+
+            }
+
+            Console.WriteLine(max - min);
+
+            Console.ReadKey();
+        }
+
+        private static void simplemax()
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int max = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                int a = Convert.ToInt32(Console.ReadLine());
+
+                if ((i == 0) || (a > max))
+                {
+                    max = a;
+                }
+            }
+
+            Console.WriteLine(max);
+
+            Console.ReadKey();
+        }
+
+        static void simlemin()
+        {
+
+            int n = Convert.ToInt32(Console.ReadLine());
+            int min = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                int a = Convert.ToInt32(Console.ReadLine());
+
+                if (i == 0) { min = a; }
+
+                if (a < min)
+                {
+                    min = a;
+                }
+            }
+
+            Console.WriteLine(min);
+
+            Console.ReadKey();
+
         }
 
         private static void difficultqubicequations()
@@ -72,11 +208,11 @@ namespace Cycles
             double rightpart = 0;
             int count = 0;
 
-            for(int i = 0; i<=1000; i++)
+            for (int i = 0; i <= 1000; i++)
             {
                 leftpart = (a * Math.Pow(i, 3) + b * Math.Pow(i, 2) + c * i + d);
                 rightpart = i - e;
-                if ((rightpart != 0) && (leftpart / rightpart) == 0) 
+                if ((rightpart != 0) && (leftpart / rightpart) == 0)
                 {
                     count++;
                 }
@@ -84,7 +220,7 @@ namespace Cycles
             }
 
             Console.WriteLine(count);
-    
+
             Console.ReadKey();
         }
 
@@ -93,11 +229,11 @@ namespace Cycles
         private static void perfectnumber()
         {
             int count_perfect = 0;
-            for(int digit=1; digit<=10000; digit++)
+            for (int digit = 1; digit <= 10000; digit++)
             {
                 int sum = 0;
 
-                for (int i=1; i < digit; i++)
+                for (int i = 1; i < digit; i++)
                 {
                     if ((digit % i) == 0)
                     {
@@ -123,9 +259,9 @@ namespace Cycles
 
         private static void interestingdigits()
         {
-            for(int i=10; i<100; i++)
+            for (int i = 10; i < 100; i++)
             {
-                if ( (i%10) * (i/10) * 2== i)
+                if ((i % 10) * (i / 10) * 2 == i)
                 {
                     Console.WriteLine($"Interesting digit: {i}");
                 }
