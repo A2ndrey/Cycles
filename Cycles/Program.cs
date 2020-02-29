@@ -60,10 +60,324 @@ namespace Cycles
             // perfectnumber();
             // difficultqubicequations();
             // simlemin();
-            //simplemax();
+            // simplemax();
             // extremum_sub();
             // speedfromcamera();
-            secondmax();
+            // secondmax();
+            // countzero();
+            // ispolindrom();
+            // digitwithout5and7();
+            // digipow();
+            // mincount();
+            // digitalroot();
+            //biggestdigiteven7();
+            // friendlydigit(); // time limited
+            amorphousdigit();
+
+        }
+
+        private static void amorphousdigit()
+        {
+            long k = Convert.ToInt64(Console.ReadLine());
+
+            for (long i = 0; i <= k; i++)
+            {
+                if (i == 0) { Console.Write($"{i} "); continue; }
+
+                long square = i * i;
+
+                if (square == i)
+                {
+                    Console.Write($"{i} ");
+                }
+                else
+                {
+                    int position = 0;
+                    double digit = 0;
+                    while (square > 0)
+                    {
+                        digit += (square % 10) * Math.Pow(10, position);
+                        if ((digit == i) && (square != 1))
+                        {
+                            Console.Write($"{i} ");
+                            break;
+                        }
+
+                        position++;
+                        square /= 10;
+                    }
+                }
+            }
+            Console.ReadKey();
+
+        }
+
+        private static void friendlydigit()
+        {
+            int k = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 1; i < k; i++)
+            {
+                int sum_i = 1;
+
+                // sum i divider
+                // int sum_i = 0;
+                if ((i == 1) || (i == 2)) { sum_i = i; }
+                else
+                {
+
+                    double sqrt = Math.Sqrt(i);
+                    for (int d = 2; d <= sqrt; d++)
+                    {
+
+                        if (i % d == 0)
+                        {
+                            if (d != (i / d))
+                            {
+                                sum_i = sum_i + d + (i / d);
+                            }
+                            else
+                            {
+                                sum_i = sum_i + d;
+                            }
+                        }
+                    }
+                }
+                //for (int m = 1; m < i; m++)
+                //{
+                //    if (i % m == 0)
+                //    {
+                //        sum_i += m;
+                //    }
+
+                //}
+
+                for (int j = i + 1; j < k; j++)
+                {
+                    int sum_j = 1;
+
+                    // sum j divider
+                    // int sum_j = 0;
+                    //for (int m = 1; m < j; m++)
+                    //{
+                    //    if (j % m == 0)
+                    //    {
+                    //        sum_j += m;
+                    //    }
+
+                    //}
+                    if ((j == 1) || (j == 2)) { sum_j = j; }
+                    else
+                    {
+
+                        double sqrtj = Math.Sqrt(j);
+                        for (int d = 2; d <= sqrtj; d++)
+                        {
+
+                            if (j % d == 0)
+                            {
+                                if (d != (j / d))
+                                {
+                                    sum_j = sum_j + d + (j / d);
+                                }
+                                else
+                                {
+                                    sum_j = sum_j + d;
+                                }
+                            }
+                        }
+                    }
+                    if ((sum_i == j) && (sum_j == i))
+                    {
+                        Console.WriteLine($"{i} {j}");
+                    }
+
+                }
+
+            }
+            Console.ReadKey();
+        }
+
+        private static void biggestdigiteven7()
+        {
+            int a = Convert.ToInt32(Console.ReadLine());
+            int b = Convert.ToInt32(Console.ReadLine());
+            int maxdigit = -1000;
+            const int seven = 7;
+
+            for (int i = a; i <= b; i++)
+            {
+                if (i % seven == 0)
+                {
+                    if (i > maxdigit)
+                    {
+                        maxdigit = i;
+                    }
+                }
+            }
+
+            if (maxdigit == -1000) { Console.WriteLine("NO"); }
+            else { Console.WriteLine(maxdigit); }
+
+            Console.ReadKey();
+        }
+
+        private static void digitalroot()
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int sum = 0;
+            int a = n;
+
+            while (n / 10 != 0)
+            {
+                while (n > 0)
+                {
+                    sum += n % 10;
+
+                    n /= 10;
+                }
+
+                n = sum;
+                sum = 0;
+
+            }
+
+
+            Console.WriteLine(n);
+
+            Console.ReadKey();
+
+        }
+
+        private static void mincount()
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int min = 0;
+            int count = 0;
+            //5
+
+            //13        //1
+            //12        //1
+
+            //10        //2
+            //31        //2
+            //10        //2
+
+            for (int i = 0; i < n; i++)
+            {
+                int a = Convert.ToInt32(Console.ReadLine());
+
+                if (i == 0) { min = a; count++; }
+
+                if (a < min)
+                {
+                    min = a;
+                    count = 1;
+                }
+                else if ((a == min) && (i != 0)) { count++; }
+            }
+
+            Console.WriteLine($"min count: {count}");
+
+            Console.ReadKey();
+        }
+
+        private static void digipow()
+        {
+            int a = Convert.ToInt32(Console.ReadLine());
+            int n = Convert.ToInt32(Console.ReadLine());
+            int result = 1;
+
+            while (n > 0)
+            {
+                result *= a;
+                n--;
+            }
+
+            Console.WriteLine(result);
+
+            Console.ReadKey();
+        }
+
+        private static void digitwithout5and7()
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int pos = 0;
+            double newdigit = 0;
+
+            while (n > 0)
+            {
+                int a = n % 10;
+                if ((a != 5) && (a != 7))
+                {
+                    newdigit += a * Math.Pow(10, pos);
+                    pos++;
+                }
+                n /= 10;
+
+            }
+
+            Console.WriteLine(newdigit);
+
+            Console.ReadKey();
+        }
+
+        private static void ispolindrom()
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int a = 0;
+            int position = 0;
+            double newdigit = 0;
+            string result = "";
+
+            int n_copy = n;
+
+            while (n_copy / 10 > 0)
+            {
+                position++;
+                n_copy /= 10;
+            }
+
+            n_copy = n;
+            while (n_copy / 10 > 0)
+            {
+                a = n_copy % 10;
+                n_copy = n_copy / 10;
+
+                newdigit += a * Math.Pow(10, position);
+
+                position--;
+
+            }
+
+            a = n_copy % 10;
+            newdigit += a * Math.Pow(10, position);
+
+            if (n == newdigit) { result = "YES"; } else { result = "NO"; }
+            Console.WriteLine(result);
+
+            Console.ReadKey();
+
+        }
+
+        private static void countzero()
+        {
+            int n = Convert.ToInt32(Console.ReadLine());
+            int count = 0;
+
+            for (int i = 0; i < n; i++)
+            {
+                int a = Convert.ToInt32(Console.ReadLine());
+
+                if (a == 0)
+                {
+                    count++;
+                }
+
+            }
+
+            Console.WriteLine(count);
+            Console.ReadKey();
 
         }
 
@@ -83,7 +397,7 @@ namespace Cycles
                 {
                     max2 = max1;
                     max1 = n;
-                    
+
                 }
                 else if (n > max2)
                 {
@@ -91,7 +405,7 @@ namespace Cycles
                 }
             }
 
- 
+
             Console.WriteLine(max2);
 
             Console.ReadLine();
